@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/shoppingCart.css">
+</head>
+<body>
+    <div id="box">
+        <div class="header">
+            <button name="yes">全选</button>
+            <button name="no">不选</button>
+            <button name="not">反选</button>
+        </div>
+
+    </div>
+    <script src="../js/tools.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        const cartArr = JSON.parse(localStorage.getItem('cart'));
+        const oContent = document.querySelector('.content');
+        const oBorder =document.querySelector('.header');
+        console.log(cartArr)
+        setCarList(cartArr,oBorder);
+        oBorder.addEventListener('click', e=>{
+            if(e.target.getAttribute('name') === 'yes'){
+                cartArr.forEach(v=>{
+                    v.buy =true;
+                })
+            }
+
+
+            if(e.target.getAttribute('name') === 'no'){
+                cartArr.forEach(v=>{
+                    v.buy = false;
+                    console.log(v.buy)
+                })
+            }
+
+            if(e.target.getAttribute('name') === 'not'){
+                cartArr.forEach(v=>{
+                    v.buy =!(v.buy);
+                })
+            }
+
+            if(e.target.getAttribute('name') === 'che'){
+                cartArr.forEach(v =>{
+                    if(v.goods_id === e.getAttribute('goods_id')){
+                        v.buy = !(v.buy);
+                        
+                    }
+                })
+            }
+            if(e.target.getAttribute('name') === 'del'){
+                let bool = window.confirm('这么好的东西 真的不要了吗？');
+                if(bool){
+
+                    
+                    cartArr.forEach((v,k)=>{
+                        if(v.goods_id == e.target.getAttribute('goods_id')){
+                            cartArr.splice(k,1);
+                        }
+                    })
+                }
+            }
+            
+
+            if(e.target.getAttribute('name') === 'jian'){
+                cartArr.forEach(v=>{
+                    if(v.goods_id == e.target.getAttribute('goods_id')){
+                        v.num++
+                    }
+                })
+            }
+
+            if(e.target.getAttribute('name')==='jia'){
+                cartArr.forEach(v=>{
+                    if(v.goods_id == e.target.getAttribute('goods_id')){
+                        v.num--;
+                    }
+                })
+            }
+
+            setCarList(cartArr ,oBorder);
+            localStorage.setItem('cart',JSON.stringify(cartArr));
+        })
+
+
+
+        function setCarList(array , ele){
+            if(array.length === 0){
+                let str =`<h1>你的男朋友已经帮助你清空了购物车，赶紧去选购把，记得还信用卡</h1>`;
+                $(ele).html(str);
+            }else{
+                let type = 0;
+                let n = 0;
+                let pay = 0;
+
+
+                let str = `
+        <div id="box">
+        <div class="header">
+            <button name="yes">全选</button>
+            <button name="no">不选</button>
+            <button name="not">反选</button>
+            </div>
+        `;
+                str +='';
+                    array.forEach(v=>{
+                        if(v.buy){
+                            type++;
+                            n += v.num;
+                            pay += v.goods_price * v.num;
+                        }
+
+
+                    str +=`   
+                    <div class="content_border">      
+                        <p><img src="${v.goods_small_logo}"  alt=""></p>
+                        <p>${v.goods_name}</p>
+                        <p>${v.goods_price}</p>
+                        <p><button name="del" goods_id=${v.goods_id} >我不要了</button></p>
+                        <p>
+                            <button name="jia" goods_id=${v.goods_id} ${v.num === 1 ? 'disabled' : ''}>-</button> 
+                                <strong> ${v.num} </strong>
+                            <button name="jian"goods_id=${v.goods_id} ${v.num === v.goods_number ? 'disabled' : ''}>+</button>
+                        </p>
+                        <input type="checkbox" name="che" goods_id="${v.goods_id}" type="checkbox" ${v.buy ? 'checked' : ''}>
+                    </div>
+                        
+                    
+                    `;
+                    })
+                    str += ` 
+                    <div class="footer">
+                        <span>您购买了${type}种商品 一共是${n}件货物</span>   
+                        <span>您需要支付${pay.toFixed(2)}元人民币,快去看看余额够不够?</span>      
+                    </div>
+                `;
+
+                $(ele).html(str);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+.box{
+    width: 300px;
+    height: 400px;
+    background-color: burlywood;
+    margin: 100px auto;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: cadetblue;
+}
+.header>ul{
+    display: flex;
+    justify-content: space-evenly;
+
+
+}
+.header>ul>li{
+    border-bottom: 1px solid red;
+    width: 150px;
+    height: 50px;
+    border-right:1px solid black ;
+    background-color: royalblue;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+.header>ul>.active{
+    background-color: brown;
+}
+.content{
+    width: 100%;
+    height: 100%;
+}
+.content>ol>li{
+    width: 300px;
+    height: 350px;
+    background-color: cornsilk;
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    position: absolute;
+}
+.content>ol>li:nth-child(2){
+    display: none;
+}

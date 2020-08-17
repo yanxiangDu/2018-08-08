@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../../font_wutfc1nt189/iconfont.css">
+</head>
+<body>
+    <div id="header">
+        <div class="headerLogo fl">
+            <img src="../images/logo.jpg" alt="" >
+        </div>
+        <div class="headerTex fr">
+            <span class="iconfont icon-dunpai">100%正品</span>
+            <span class="iconfont icon-7tianwuliyoutuihuo">7天放心退</span>
+            <span class="iconfont icon-icon-test">限时抢购</span>
+        </div>
+    </div>
+    <div class="contentOut">
+
+        <div class="content">
+            <div action="" id="register">
+                <div class="reg-header">
+                    <span>注册</span>
+                    <span>已有可<a href="../index.html">直接登陆</a></span>
+                </div>
+                <input type="text" name="name" placeholder="请输入用户名"><br><span name ="nameSpan" class="hint">请重新输入用户名</span><br>
+                <input type="text" name="pwd1" placeholder="请输入密码" ><br><span  class="hint">请输入密码</span><br>
+                <input type="text" name="pwd2" placeholder="请再次输入密码"><br><span class="hint">请核对密码</span><br>
+                <input type="text" name="vc" placeholder="请输入验证码" ><a id="sc"></a><br><span  class="hint">请输入正确的验证码</span><br>
+                <span class="spanVc" name="vcSpan"></span>
+                <button>提交</button>
+            </div>
+    </div>
+
+    </div>
+    <div id="footer">
+        Copyright 2008-2020 vip.com，All Rights Reserved ICP证：粤 B2-20080329
+    </div>
+    <script src="../js/tools.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+
+
+        const oIptName = document.querySelector('[name="name"]');
+        const oIptPwd1 = document.querySelector('[name="pwd1"]');
+        const oIptPwd2 = document.querySelector('[name="pwd2"]');
+        const oIptVc = document.querySelector('[name="vc"]');
+
+        const oIptVcSpan = document.querySelector('[name="vcSpan"]');
+        const oIptNameSpan =document.querySelector('[name="nameSpan"]');
+
+        let bool;
+
+        const oVcA =document.querySelector('#sc');
+        oVcA.innerHTML = mySetVc();
+        oVcA.addEventListener('click',()=>{
+            oVcA.innerHTML = mySetVc();
+        })
+
+        oIptName.addEventListener('change', ()=>{
+            let name = oIptName.value;
+
+            $.ajax({
+                url:'../server/goods_select.php',
+                type:'post',
+                data:{userName:name},
+                dataType:'json',
+                success:result=>{
+                    if(result.res === 1){
+                        oIptNameSpan.style.display = 'none';
+                        bool =true;
+                    }else{
+                        oIptNameSpan.style.display = 'block';
+                        oIptNameSpan.classList.add('class="active"')
+                        bool = false;
+                    }
+                }
+            })
+        })
+
+
+    const oBut = document.querySelector('button');
+    oBut.addEventListener('click', ()=>{
+        if( bool === false){
+            return;
+        }
+
+
+        let nameVal = oIptName.value;
+        let pwd1Val = oIptPwd1.value;
+        let pwd2Val = oIptPwd2.value;
+        let vcVal = oIptVc.value;
+
+        $.ajax({
+            url:'../server/goods_res.php',
+            type:'post',
+            data:{userName:nameVal, userPwd:pwd1Val},
+            dataType:'json',
+            success: (result)=>{
+                if(result.res === 1){
+                    window.alert('注册成功，点击跳转到主页');
+                    //window.location.href = '../index.html';
+                }else{
+                    window.alert('注册失败 用户名重复，请重新设定用户名，感谢你的理解');
+                }
+            }
+        })
+    })
+
+    </script>
+</body>
+</html>

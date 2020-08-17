@@ -1,0 +1,308 @@
+/*  header */
+.headerOut{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(245,245,245);
+}
+#header{
+    width: 1000px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+
+#header>ul>li{
+    float:left;
+    color: rgb(156,156,156);
+    line-height: 50px;
+    margin-right: 15px;
+    cursor: pointer;
+    
+}
+#header>ul>li:hover{
+    color: brown;
+}
+/* search */
+.searchOut{
+    width: 100%;
+}
+#search{
+    width: 1000px;
+    height: 100px;
+    background-color: floralwhite;
+    margin: 0 auto;
+}
+#search>.search_cont{
+    height: 100%; 
+    position: relative;
+}
+#search>.search_cont>input {
+    float:left;
+    width: 400px;
+    height: 30px;
+    margin-top: 50px;
+    transform: translateY(-10px);
+    background-color: #fff;  
+}
+search_cont.search_cont>button{
+    position: absolute;
+    top: 50%;
+}
+ /*nav */
+
+.navOut{
+     width: 100%;
+     background-color: forestgreen;
+
+ }
+#nav{
+    width: 1000px;
+    height: 70px;
+    background-color: honeydew;
+    margin: 0 auto;
+}
+#nav>ul{
+    width: 1000px;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#nav>ul>li{
+    line-height: 70px;
+    height: 100%;
+    color: black;
+    color: gray;
+}
+
+#nav>ul>li:hover{
+    background-color: orange;
+    color: white;
+}
+.navTwo>li{
+    width: 100px;
+    height: 1000px;
+}
+
+
+/* banner */
+.baanerOut{
+    width: 100%;
+    background-color: burlywood;
+}
+#banner{
+    width: 1400px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+#banner>.banner_img{
+    width: 500%;
+    height: 400px ;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+#banner>.banner_img>li{
+    height: 100%;
+    width: 1400px;
+    float: left;
+    background-color: turquoise;
+    
+}
+#banner>.banner_img>li>img{
+    width: 1400px;
+    height: 400px;
+}
+#banner>.banner_nav{
+    width: 400px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 15px;
+}
+#banner>.banner_nav>li{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: thistle;
+    cursor: pointer;
+}
+#banner>.banner_nav>li.active{
+    background-color: yellowgreen;
+}
+#banner>.banner_cut{
+    font-size: 50px;
+    height: 50px;
+    width: 100%;
+    color:  rgba(0,0,0,0.5);
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-25px);
+}
+#banner>.banner_cut>a{
+    background-color: rgba(0,0,0,0.5);
+    background-color:  rgba(0,0,0,0.3);
+
+}
+/*content  */
+.contentOut{
+    width: 100%;
+}
+.content_all{
+    width: 1000px;
+    height: 400px;
+    margin: 0 auto;
+    color: black;
+    font-weight: 800;
+    margin-bottom: 100px;
+}
+.content_all>strong{
+    font-size: 50px;
+    text-align: center;
+    
+}
+.content_all>div{
+    font-size: 120px;
+    text-align: center;
+    line-height: 400px;
+    background-color: aquamarine;
+}
+/* footer */
+.footerOut{
+    width: 100%;
+}
+#footer{
+    width: 1000px;
+    height: 100px;
+    background: black;
+    margin: 0 auto;
+    line-height: 100px;
+    text-align: center;
+    font-size: 120px;
+    color: white;
+
+}
+/* nav_side */
+#nav_side{
+    width: 80px;
+    background-color: whitesmoke;
+    position:fixed;
+    top:200px;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+#nav_side>ul>li{
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 30px;
+    color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+#nav_side>ul>li:hover{
+    color: plum;
+}
+#nav_side>ul>.active{
+    color: white;
+    background-color: grey;
+}
+/* login */
+#login{
+    width: 50px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color:rgb(38,38,38) ;
+    z-index: 999;    
+    display: none;
+}
+#login>div{
+
+    transform: translateY(50%);
+    margin-top:-50% ;
+}
+#login>div>p{
+    color: white;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+}
+#login>div>p:hover{
+
+    background-color: tomato;
+}
+#login>div>.active{
+    background-color: tomato;
+
+}
+
+
+/* onLogin */
+#onLogin{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    box-sizing: border-box;
+    z-index: 999;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    color: rgba(0,0,0,0.6);
+    display: none;
+}
+
+#onLogin>.onLoginText{
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+}
+#onLogin>.onLoginPaw{
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+}
+#onLogin>button{
+    font-size: 20px;
+    margin-top: 20px;
+    color: rgba(0,0,0,0.6);
+    margin-left: 80px;
+}
+#onLogin>.onLogin_IN{
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    margin: 200px auto;
+    padding: 50px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+#onLogin>.onLogin_IN>.close{
+    width: 20px;
+    height: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    cursor: pointer;
+}

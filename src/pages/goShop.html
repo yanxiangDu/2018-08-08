@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Document</title>
+    <link
+        rel="stylesheet"
+        href="../css/root.css"
+    >
+    <link
+        rel="stylesheet"
+        href="../css/goShop.css"
+    >
+</head>
+
+<body>
+    <div id="goShop">
+
+
+    </div>
+    
+
+    <script src="../js/tools.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        const valObj = getUrlVal();
+
+        let res = {};
+        $.ajax({
+            url: '../server/goods_detail.php',
+            data: { goods_id: valObj.goods_id },
+            type: 'post',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result)
+                res = result;
+                let str = `
+                        <div class="img_cont fl">
+                            <img src="${result.goods_big_logo}" alt="">
+                        </div>
+                        <div class="text_cont ">
+                            <p>${result.cat_id}</p>
+                            <p>${result.goods_name}</p>
+                            <p>${result.goods_price}</p>
+                            <p>配送</p>
+                            <p>15 元</p>
+                            <p>颜色</p>
+                            <p>${result.goods_weight}</p>
+                            <p>数量</p>
+                            <p class="button" name="join">加入购物袋</p> 
+                            <div class="minute">${result.goods_introduce}</div>    
+                        </div>
+                        `;
+                        $('#goShop').html( str );
+            }
+        })
+
+
+        const oFather = document.querySelector('#goShop');
+        console.log(oFather)
+        oFather.addEventListener('click',e=>{
+            if(e.target.getAttribute('name') === 'join'){
+                const cookieObj = myGetCookie();
+                let arr = [];
+
+                if(cookieObj.login === undefined){
+                    let bool =window.confirm('你还没有登陆，请先登陆点击确认登陆');
+                    if(bool=true){
+                        window.location = `../index.html`;
+                    }
+                }else{
+                    if(localStorage.getItem('cart') === null){
+                        res.num =1;
+                        res.buy = true;
+                        arr.push(res);
+                    }else{
+                        let bool = true;
+                        arr = JSON.parse(localStorage.getItem('cart'));
+                        arr.forEach((v,k)=>{
+                            if(v.goods_id === res.goods_id){
+                                v.num++
+                                bool = false
+                            }
+                        })
+
+                        if(bool){
+                            res.num = 1;
+                            res.buy = true;
+                            arr.push(res);
+                        }
+                    }
+                    localStorage.setItem('cart',JSON.stringify(arr));
+                    window.location = './shoppingCart.html';
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

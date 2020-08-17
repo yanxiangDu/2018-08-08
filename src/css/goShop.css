@@ -1,0 +1,33 @@
+#goShop{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: rosybrown;
+}
+.img_cont{
+    width: 300px;
+    height: 400px;
+    background-color: royalblue;
+}
+.img_cont>img{
+    width: 100%;
+    height: 100%;
+}
+
+.text_cont>p{
+    margin-top: 20px;
+    background-color: slateblue;
+}
+.text_cont>.button{
+    font-size: 30px;
+    background-color: tomato;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    
+}
+.minute{
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: skyblue;
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Document</title><link rel=stylesheet href=../css/root.css><link rel=stylesheet href=../css/cut.css></head><body><div class=box><div class=header><ul><li class=active>账户登陆</li><li>微信扫码</li></ul></div><div class=content><ol><li index=1>1</li><li index=2>2</li></ol></div></div><script>const weix = document.querySelectorAll('ul>li')[0];
+        const deng = document.querySelectorAll('ul>li')[1];
+
+        const weixC = document.querySelectorAll('ol>li')[0];
+        const dengC = document.querySelectorAll('ol>li')[1];
+
+
+        weix.onmousemove = function(){
+            weixC.style.display = 'block';
+            dengC.style.display = 'none';
+        }
+        deng.onmousemove = function(){
+            weixC.style.display = 'none';
+            dengC.style.display = 'block';
+        }</script></body></html>
